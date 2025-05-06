@@ -3,24 +3,295 @@
 <head>
     <meta charset="UTF-8">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
-    <title>Vivolere - Live to Will</title>
-    <link rel="stylesheet" href="styles.css">
+    <title>Vivolere | Live to Will</title>
     <link rel="preconnect" href="https://fonts.googleapis.com">
     <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
-    <link href="https://fonts.googleapis.com/css2?family=Inter:wght@400;500;600;700&display=swap" rel="stylesheet">
+    <link href="https://fonts.googleapis.com/css2?family=Inter:wght@400;500;600;700&family=Playfair+Display:wght@400;500;600;700&display=swap" rel="stylesheet">
+    <style>
+        :root {
+            --primary: #2C3E50;
+            --secondary: #3498DB;
+            --accent: #E67E22;
+            --light: #ECF0F1;
+            --dark: #1A252F;
+            --font-main: 'Inter', -apple-system, BlinkMacSystemFont, sans-serif;
+            --font-accent: 'Playfair Display', Georgia, serif;
+        }
+        
+        * {
+            margin: 0;
+            padding: 0;
+            box-sizing: border-box;
+        }
+        
+        body {
+            font-family: var(--font-main);
+            line-height: 1.6;
+            color: var(--dark);
+            background-color: var(--light);
+            overflow-x: hidden;
+        }
+        
+        .container {
+            max-width: 1200px;
+            margin: 0 auto;
+            padding: 0 2rem;
+        }
+        
+        /* Hero Section */
+        .hero {
+            height: 100vh;
+            display: flex;
+            align-items: center;
+            background: linear-gradient(rgba(44, 62, 80, 0.8), rgba(44, 62, 80, 0.8)), url('https://images.unsplash.com/photo-1451187580459-43490279c0fa?ixlib=rb-1.2.1&auto=format&fit=crop&w=1950&q=80') center/cover no-repeat;
+            color: white;
+            text-align: center;
+        }
+        
+        .hero-content {
+            max-width: 800px;
+            margin: 0 auto;
+        }
+        
+        .hero h1 {
+            font-family: var(--font-accent);
+            font-size: 4rem;
+            margin-bottom: 1.5rem;
+            line-height: 1.2;
+        }
+        
+        .hero .tagline {
+            font-style: italic;
+            font-family: var(--font-accent);
+            font-size: 1.8rem;
+            margin-bottom: 2rem;
+            opacity: 0.95;
+        }
+        
+        .hero .subtitle {
+            font-size: 1.25rem;
+            max-width: 800px;
+            margin: 0 auto;
+            opacity: 0.9;
+        }
+        
+        /* Sections */
+        section {
+            padding: 6rem 0;
+        }
+        
+        section:nth-child(even) {
+            background-color: var(--primary);
+            color: white;
+        }
+        
+        .section-title {
+            text-align: center;
+            margin-bottom: 4rem;
+            position: relative;
+        }
+        
+        .section-title h2 {
+            font-family: var(--font-accent);
+            font-size: 2.5rem;
+            font-weight: 700;
+            color: var(--primary);
+        }
+        
+        section:nth-child(even) .section-title h2 {
+            color: white;
+        }
+        
+        .section-title::after {
+            content: "";
+            display: block;
+            width: 80px;
+            height: 4px;
+            background-color: var(--accent);
+            margin: 0.8rem auto 0;
+        }
+        
+        section p {
+            margin-bottom: 1.5rem;
+            font-size: 1.125rem;
+            max-width: 800px;
+            margin-left: auto;
+            margin-right: auto;
+        }
+        
+        /* Roles List */
+        .roles {
+            max-width: 800px;
+            margin: 3rem auto;
+        }
+        
+        .roles ul {
+            list-style: none;
+        }
+        
+        .roles li {
+            padding: 1.5rem;
+            margin-bottom: 1rem;
+            background-color: rgba(255, 255, 255, 0.1);
+            border-radius: 8px;
+            transition: transform 0.3s ease;
+        }
+        
+        .roles li:hover {
+            transform: translateX(10px);
+        }
+        
+        /* Contact Form */
+        .contact-form {
+            max-width: 600px;
+            margin: 0 auto;
+            padding: 2rem;
+            background-color: white;
+            border-radius: 1rem;
+            box-shadow: 0 4px 6px -1px rgba(0, 0, 0, 0.1);
+        }
+        
+        .contact-form h3 {
+            font-family: var(--font-accent);
+            font-size: 1.8rem;
+            margin-bottom: 1rem;
+            color: var(--primary);
+        }
+        
+        .form-group {
+            margin-bottom: 1.5rem;
+        }
+        
+        label {
+            display: block;
+            margin-bottom: 0.5rem;
+            font-weight: 600;
+            color: var(--primary);
+            font-size: 0.95rem;
+            text-transform: uppercase;
+            letter-spacing: 0.5px;
+        }
+        
+        input,
+        select,
+        textarea {
+            width: 100%;
+            padding: 0.75rem;
+            border: 1px solid var(--light);
+            border-radius: 0.5rem;
+            font-family: inherit;
+            font-size: 1rem;
+            background-color: var(--light);
+            transition: all 0.3s ease;
+        }
+        
+        input:focus,
+        select:focus,
+        textarea:focus {
+            outline: none;
+            border-color: var(--accent);
+            box-shadow: 0 0 0 3px rgba(230, 126, 34, 0.1);
+            background-color: white;
+        }
+        
+        input::placeholder,
+        textarea::placeholder {
+            color: #94a3b8;
+        }
+        
+        select {
+            appearance: none;
+            background-image: url("data:image/svg+xml,%3Csvg xmlns='http://www.w3.org/2000/svg' fill='none' viewBox='0 0 24 24' stroke='%232C3E50'%3E%3Cpath stroke-linecap='round' stroke-linejoin='round' stroke-width='2' d='M19 9l-7 7-7-7'%3E%3C/path%3E%3C/svg%3E");
+            background-repeat: no-repeat;
+            background-position: right 0.75rem center;
+            background-size: 1.25rem;
+            padding-right: 2.5rem;
+        }
+        
+        .submit-btn {
+            background-color: var(--accent);
+            color: white;
+            padding: 1rem 2rem;
+            border: none;
+            border-radius: 0.5rem;
+            font-size: 1rem;
+            font-weight: 500;
+            cursor: pointer;
+            transition: all 0.3s ease;
+            width: 100%;
+        }
+        
+        .submit-btn:hover {
+            background-color: #d35400;
+            transform: translateY(-3px);
+        }
+        
+        /* Footer */
+        footer {
+            background-color: var(--primary);
+            color: white;
+            padding: 2rem 0;
+            text-align: center;
+        }
+        
+        /* Responsive Design */
+        @media (max-width: 768px) {
+            .hero h1 {
+                font-size: 3rem;
+            }
+            
+            .hero .tagline {
+                font-size: 1.5rem;
+            }
+            
+            .hero .subtitle {
+                font-size: 1.125rem;
+            }
+            
+            section {
+                padding: 4rem 0;
+            }
+            
+            .section-title h2 {
+                font-size: 2rem;
+            }
+            
+            .container {
+                padding: 0 1rem;
+            }
+        }
+        
+        @media (max-width: 480px) {
+            .hero h1 {
+                font-size: 2.5rem;
+            }
+            
+            .hero {
+                padding: 6rem 0;
+            }
+            
+            section {
+                padding: 3rem 0;
+            }
+        }
+    </style>
 </head>
 <body>
     <header class="hero">
         <div class="container">
-            <h1>Vivolere</h1>
-            <p class="tagline">Live to Will.</p>
-            <p class="subtitle">From the Latin roots vivere (to live) and volere (to will), Vivolere is the name we've given to a truth we've felt for a long time: We are not passive. We are participants. Together, we can shape the world to serve everyone.</p>
+            <div class="hero-content">
+                <h1>Vivolere</h1>
+                <p class="tagline">Live to Will.</p>
+                <p class="subtitle">From the Latin roots vivere (to live) and volere (to will), Vivolere is the name we've given to a truth we've felt for a long time: We are not passive. We are participants. Together, we can shape the world to serve everyone.</p>
+            </div>
         </div>
     </header>
 
     <section class="why-we-exist">
         <div class="container">
-            <h2>Why We Exist</h2>
+            <div class="section-title">
+                <h2>Why We Exist</h2>
+            </div>
             <p>If you've spent your life getting good at something—but feel like your skills only matter if they can be monetized—you're not alone.</p>
             <p>Vivolere is for those who are done chasing money, but not done creating value. We're not here to fight the system. We're building tools to work with it—as it was originally intended.</p>
             <p>Right now, wealthy people use the system to fund meaningful work, support their families, and protect their legacies. They aren't cheating. They're just structured.</p>
@@ -30,7 +301,9 @@
 
     <section class="our-belief">
         <div class="container">
-            <h2>Our Belief</h2>
+            <div class="section-title">
+                <h2>Our Belief</h2>
+            </div>
             <p>Let computers do what they're best at: Execute. Analyze. Repeat.</p>
             <p>Let humans do what they're best at: Create. Connect. Agree. Wonder.</p>
             <p>Build the future where both thrive. That's Vivolere.</p>
@@ -39,52 +312,55 @@
 
     <section class="join-team">
         <div class="container">
-            <h2>We're Building a Team</h2>
+            <div class="section-title">
+                <h2>We're Building a Team</h2>
+            </div>
             <p>We need values-aligned professionals who want to shape this future—not just code it or advise it.</p>
             
             <div class="roles">
-                <h3>Current roles:</h3>
+                <h3>Skills & Qualities We're Looking For</h3>
                 <ul>
-                    <li>Backend Software Development (local-first, lightweight protocols)</li>
-                    <li>Law (all kinds)</li>
-                    <li>Scientists (all kinds)</li>
-                    <li>Front-End UI Design (consent-forward, minimal and intuitive)</li>
-                    <li>Community Engagement Professionals (especially for skill-rich, cash-strapped contributors)</li>
-                    <li>Fundraising (philanthropy, aligned capital, and VC)</li>
+                    <li>Technical expertise fluent in all forms of coding language</li>
+                    <li>Deep understanding of legal frameworks and regulatory environments</li>
+                    <li>Scientific mindset with experience in research and data analysis</li>
+                    <li>Eye for intuitive, consent-forward user interface design</li>
+                    <li>Experience in community building and engagement, especially with diverse skill sets</li>
+                    <li>Connections and experience in philanthropy, impact investing, or venture capital</li>
+                    <li>Passion for creating systems that serve both human creativity and technological efficiency</li>
                 </ul>
             </div>
 
             <div class="contact-form">
                 <h3>Get in Touch</h3>
                 <p>We want to hear from you if this feels like something you've been waiting to find.</p>
-                <form action="submit.php" method="POST">
+                <form action="https://formspree.io/f/mzzrrqjw" method="POST">
                     <div class="form-group">
-                        <label for="name">Name</label>
-                        <input type="text" id="name" name="name" required>
+                        <label for="name">Your Name</label>
+                        <input type="text" id="name" name="name" placeholder="Enter your full name" required>
                     </div>
                     
                     <div class="form-group">
-                        <label for="email">Email</label>
-                        <input type="email" id="email" name="email" required>
+                        <label for="email">Email Address</label>
+                        <input type="email" id="email" name="email" placeholder="Enter your email address" required>
                     </div>
                     
                     <div class="form-group">
-                        <label for="role">Interested Role</label>
+                        <label for="role">Your Skills & Interests</label>
                         <select id="role" name="role" required>
-                            <option value="">Select a role</option>
-                            <option value="backend">Backend Software Development</option>
-                            <option value="law">Law</option>
-                            <option value="scientist">Scientist</option>
-                            <option value="frontend">Front-End UI Design</option>
-                            <option value="community">Community Engagement</option>
-                            <option value="fundraising">Fundraising</option>
-                            <option value="other">Other</option>
+                            <option value="">Select your primary area of expertise</option>
+                            <option value="technical">Technical Development & Coding</option>
+                            <option value="legal">Legal & Regulatory</option>
+                            <option value="scientific">Scientific Research & Analysis</option>
+                            <option value="design">User Interface & Experience Design</option>
+                            <option value="community">Community Building & Engagement</option>
+                            <option value="funding">Philanthropy & Investment</option>
+                            <option value="other">Other - Let's Discuss How You Can Help</option>
                         </select>
                     </div>
                     
                     <div class="form-group">
-                        <label for="message">Message</label>
-                        <textarea id="message" name="message" rows="4" required></textarea>
+                        <label for="message">Your Message</label>
+                        <textarea id="message" name="message" rows="4" placeholder="Tell us about your skills, experience, and why you're interested in joining Vivolere. If your skills aren't listed above, let us know how you'd like to contribute and we'll find a way to work together." required></textarea>
                     </div>
                     
                     <button type="submit" class="submit-btn">Send Message</button>

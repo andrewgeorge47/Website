@@ -4,33 +4,88 @@
     <meta charset="UTF-8">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
     <title>Thank You - Vivolere</title>
-    <link rel="stylesheet" href="styles.css">
     <link rel="preconnect" href="https://fonts.googleapis.com">
     <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
-    <link href="https://fonts.googleapis.com/css2?family=Inter:wght@400;500;600;700&display=swap" rel="stylesheet">
+    <link href="https://fonts.googleapis.com/css2?family=Inter:wght@400;500;600;700&family=Playfair+Display:wght@400;500;600;700&display=swap" rel="stylesheet">
     <style>
+        :root {
+            --primary: #2C3E50;
+            --secondary: #3498DB;
+            --accent: #E67E22;
+            --light: #ECF0F1;
+            --dark: #1A252F;
+            --font-main: 'Inter', -apple-system, BlinkMacSystemFont, sans-serif;
+            --font-accent: 'Playfair Display', Georgia, serif;
+        }
+        
+        * {
+            margin: 0;
+            padding: 0;
+            box-sizing: border-box;
+        }
+        
+        body {
+            font-family: var(--font-main);
+            line-height: 1.6;
+            color: var(--dark);
+            background-color: var(--light);
+        }
+        
+        .container {
+            max-width: 1200px;
+            margin: 0 auto;
+            padding: 0 2rem;
+        }
+        
         .thank-you {
+            min-height: 100vh;
+            display: flex;
+            align-items: center;
+            justify-content: center;
             text-align: center;
-            padding: 8rem 0;
+            background: linear-gradient(rgba(44, 62, 80, 0.9), rgba(44, 62, 80, 0.9)), url('https://images.unsplash.com/photo-1451187580459-43490279c0fa?ixlib=rb-1.2.1&auto=format&fit=crop&w=1950&q=80') center/cover no-repeat;
+            color: white;
         }
+        
         .thank-you h1 {
-            font-size: 3rem;
+            font-family: var(--font-accent);
+            font-size: 3.5rem;
             margin-bottom: 2rem;
-            color: var(--primary-color);
+            color: white;
         }
+        
         .thank-you p {
             font-size: 1.25rem;
             max-width: 600px;
             margin: 0 auto 2rem;
+            opacity: 0.9;
         }
+        
         .back-link {
             display: inline-block;
-            color: var(--primary-color);
+            color: var(--accent);
             text-decoration: none;
             font-weight: 500;
+            padding: 0.75rem 1.5rem;
+            border: 2px solid var(--accent);
+            border-radius: 0.5rem;
+            transition: all 0.3s ease;
         }
+        
         .back-link:hover {
-            text-decoration: underline;
+            background-color: var(--accent);
+            color: white;
+            transform: translateY(-3px);
+        }
+        
+        @media (max-width: 768px) {
+            .thank-you h1 {
+                font-size: 2.5rem;
+            }
+            
+            .thank-you p {
+                font-size: 1.125rem;
+            }
         }
     </style>
 </head>
