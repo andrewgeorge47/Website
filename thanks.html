@@ -4,92 +4,140 @@
     <meta charset="UTF-8">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
     <title>Thank You - Vivolere</title>
-    <link rel="preconnect" href="https://fonts.googleapis.com">
-    <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
-    <link href="https://fonts.googleapis.com/css2?family=Inter:wght@400;500;600;700&family=Playfair+Display:wght@400;500;600;700&display=swap" rel="stylesheet">
     <style>
+        @import url('https://fonts.googleapis.com/css2?family=Orbitron:wght@400;700;900&family=Poppins:wght@300;400;600;700&display=swap');
         :root {
-            --primary: #2C3E50;
-            --secondary: #3498DB;
-            --accent: #E67E22;
-            --light: #ECF0F1;
-            --dark: #1A252F;
-            --font-main: 'Inter', -apple-system, BlinkMacSystemFont, sans-serif;
-            --font-accent: 'Playfair Display', Georgia, serif;
+            --neon-purple: #e42bff;
+            --neon-blue: #2b95ff;
+            --neon-teal: #00e1ff;
+            --neon-orange: #ff8a2b;
+            --neon-pink: #ff2b8a;
+            --dark-bg: #050518;
         }
-        
-        * {
-            margin: 0;
-            padding: 0;
-            box-sizing: border-box;
+        html, body {
+            height: 100%;
         }
-        
         body {
-            font-family: var(--font-main);
-            line-height: 1.6;
-            color: var(--dark);
-            background-color: var(--light);
+            min-height: 100vh;
+            background: linear-gradient(125deg, #050518, #080824, #050518);
+            color: white;
+            font-family: 'Poppins', sans-serif;
+            margin: 0;
+            display: flex;
+            align-items: center;
+            justify-content: center;
+            position: relative;
+            overflow: hidden;
         }
-        
-        .container {
-            max-width: 1200px;
-            margin: 0 auto;
-            padding: 0 2rem;
+        .bg-particles {
+            position: fixed;
+            top: 0; left: 0; width: 100vw; height: 100vh;
+            pointer-events: none;
+            z-index: 0;
+            overflow: hidden;
         }
-        
+        .bg-particle {
+            position: absolute;
+            border-radius: 50%;
+            opacity: 0.13;
+            filter: blur(1px);
+            animation: float 8s infinite alternate;
+        }
+        .bg-particle.blue {
+            background: var(--neon-blue);
+            width: 90px; height: 90px; left: 10vw; top: 30vh;
+            animation-delay: 0s;
+        }
+        .bg-particle.purple {
+            background: var(--neon-purple);
+            width: 60px; height: 60px; left: 80vw; top: 60vh;
+            animation-delay: 2s;
+        }
+        .bg-particle.orange {
+            background: var(--neon-orange);
+            width: 50px; height: 50px; left: 50vw; top: 80vh;
+            animation-delay: 1s;
+        }
+        .bg-particle.teal {
+            background: var(--neon-teal);
+            width: 70px; height: 70px; left: 70vw; top: 20vh;
+            animation-delay: 3s;
+        }
+        .bg-particle.pink {
+            background: var(--neon-pink);
+            width: 40px; height: 40px; left: 20vw; top: 70vh;
+            animation-delay: 4s;
+        }
+        @keyframes float {
+            0% { transform: translateY(0) scale(1); opacity: 0.13; }
+            50% { transform: translateY(-30px) scale(1.1); opacity: 0.18; }
+            100% { transform: translateY(0) scale(1); opacity: 0.13; }
+        }
         .thank-you {
             min-height: 100vh;
             display: flex;
             align-items: center;
             justify-content: center;
             text-align: center;
-            background: linear-gradient(rgba(44, 62, 80, 0.9), rgba(44, 62, 80, 0.9)), url('https://images.unsplash.com/photo-1451187580459-43490279c0fa?ixlib=rb-1.2.1&auto=format&fit=crop&w=1950&q=80') center/cover no-repeat;
-            color: white;
+            width: 100vw;
+            z-index: 1;
+            position: relative;
         }
-        
         .thank-you h1 {
-            font-family: var(--font-accent);
+            font-family: 'Orbitron', sans-serif;
             font-size: 3.5rem;
             margin-bottom: 2rem;
-            color: white;
+            background: linear-gradient(90deg, var(--neon-orange), var(--neon-blue));
+            -webkit-background-clip: text;
+            background-clip: text;
+            color: transparent;
+            font-weight: 900;
+            letter-spacing: -1px;
         }
-        
         .thank-you p {
             font-size: 1.25rem;
             max-width: 600px;
             margin: 0 auto 2rem;
-            opacity: 0.9;
+            opacity: 0.92;
+            font-weight: 500;
         }
-        
         .back-link {
             display: inline-block;
-            color: var(--accent);
-            text-decoration: none;
-            font-weight: 500;
-            padding: 0.75rem 1.5rem;
-            border: 2px solid var(--accent);
-            border-radius: 0.5rem;
-            transition: all 0.3s ease;
-        }
-        
-        .back-link:hover {
-            background-color: var(--accent);
             color: white;
-            transform: translateY(-3px);
+            background: linear-gradient(45deg, var(--neon-purple), var(--neon-blue));
+            text-decoration: none;
+            font-weight: 600;
+            padding: 0.9rem 2.2rem;
+            border-radius: 30px;
+            font-size: 1.1rem;
+            box-shadow: 0 5px 15px rgba(43, 149, 255, 0.3);
+            transition: all 0.3s ease;
+            border: none;
         }
-        
+        .back-link:hover {
+            background: linear-gradient(45deg, var(--neon-orange), var(--neon-pink));
+            color: white;
+            transform: translateY(-3px) scale(1.04);
+            box-shadow: 0 8px 25px rgba(228, 43, 255, 0.3);
+        }
         @media (max-width: 768px) {
             .thank-you h1 {
-                font-size: 2.5rem;
+                font-size: 2.2rem;
             }
-            
             .thank-you p {
-                font-size: 1.125rem;
+                font-size: 1.05rem;
             }
         }
     </style>
 </head>
 <body>
+    <div class="bg-particles">
+        <div class="bg-particle blue"></div>
+        <div class="bg-particle purple"></div>
+        <div class="bg-particle orange"></div>
+        <div class="bg-particle teal"></div>
+        <div class="bg-particle pink"></div>
+    </div>
     <div class="thank-you">
         <div class="container">
             <h1>Thank You!</h1>
